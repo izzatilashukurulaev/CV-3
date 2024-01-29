@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Конвертер валют</title>
+    <style>
+        .converter {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .input {
+            margin-bottom: 10px;
+        }
+        .button {
+            width: 100px;
+            height: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h2>Конвертер валют</h2>
+        <label for="usd">Доллар (USD):</label>
+        <input type="text" id="usd" class="input" oninput="convertCurrency('usd')">
+        <br>
+        <label for="sum">Сум (UZS):</label>
+        <input type="text" id="sum" class="input" oninput="convertCurrency('sum')">
+        <br>
+        <button onclick="clearInput()" class="button">Очистить</button>
+    </div>
+    <script>
+        function convertCurrency(currency) {
+            if(currency === 'usd') {
+                let usdValue = document.getElementById('usd').value;
+                let sumValue = usdValue * 10500; // Здесь можно изменить курс доллара
+                document.getElementById('sum').value = sumValue.toFixed(2);
+            }
+            else if(currency === 'sum') {
+                let sumValue = document.getElementById('sum').value;
+                let usdValue = sumValue / 10500; // Здесь можно изменить курс доллара
+                document.getElementById('usd').value = usdValue.toFixed(2);
+            }
+        }
+        function clearInput() {
+            document.getElementById('usd').value = '';
+            document.getElementById('sum').value = '';
+        }
+    </script>
+</body>
+</html>
